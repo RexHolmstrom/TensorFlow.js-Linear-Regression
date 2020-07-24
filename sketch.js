@@ -3,12 +3,22 @@ let ys = [];
 
 let m, b;
 
+const learningRate = 0.2;
+const optimizer = tf.train.sgd(learningRate);
 
 function setup() {
     createCanvas(400, 400);
     m = tf.variable(tf.scaler(random(1)));
     b = tf.variable(tf.scaler(random(1)));
 }
+
+function predict(x) {
+    const tfxs = tf.tensor1d(x);
+    // y = mx + b
+    const ys = tfxs.mul(m).add(b);
+    return ys;
+}
+
 
 function mousePressed() {
     let x = map(mouseX, 0, width, 0, 1);
