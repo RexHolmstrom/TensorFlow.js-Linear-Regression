@@ -11,7 +11,8 @@ function setup() {
     m = tf.variable(tf.scaler(random(1)));
     b = tf.variable(tf.scaler(random(1)));
 }
-
+// predict function
+//gives back a tensor 
 function predict(x) {
     const tfxs = tf.tensor1d(x);
     // y = mx + b
