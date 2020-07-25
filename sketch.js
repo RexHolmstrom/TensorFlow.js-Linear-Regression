@@ -19,6 +19,9 @@ function predict(x) {
     return ys;
 }
 
+function loss(pred, labels) {
+    return pred.sub(labels).squared().mean();
+}
 
 function mousePressed() {
     let x = map(mouseX, 0, width, 0, 1);
@@ -28,6 +31,11 @@ function mousePressed() {
 }
 
 function draw() {
+
+
+    optimizer.minimize(() => loss(predict(xs), ys));
+
+
 
     background(0);
 
